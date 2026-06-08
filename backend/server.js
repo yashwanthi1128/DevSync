@@ -8,7 +8,7 @@ const app = express();
 
 // middleware — cors MUST be before express.json() and routes
 app.use(cors({
-  origin: ["http://localhost:3000", "https://devsync-frontend.onrender.com"],
+  origin: ["http://localhost:3000", "https://devsync-frontend-ey4r.onrender.com"],
   credentials: true
 }));
 app.use(express.json());
