@@ -1,43 +1,54 @@
 const jwt = require("jsonwebtoken");
-const User = require("../models/User"); // ← adjust path to your User model
+const User = require("../models/User");
 
 const protect = async (req, res, next) => {
-  try {
-    let token;
+  let token;
 
-    if (
-      req.headers.authorization &&
-      req.headers.authorization.startsWith("Bearer")
-    ) {
+  if (req.headers.authorization?.startsWith("Bearer")) {
+    try {
       token = req.headers.authorization.split(" ")[1];
 
-      // 1. Use.env instead of hardcoded string
+      if (!token) {
+        return res.status(401).json({
+          success: false,
+          message: "Not authorized, token missing",
+        });
+      }
+
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-      // 2. Attach full user from DB, exclude password
-      req.user = await User.findById(decoded.id).select("-password");
+      // Attach user without password
+      const user = await User.findById(decoded.id).select("-password");
 
-      if (!req.user) {
+      if (!user) {
         return res.status(401).json({
           success: false,
           message: "User not found",
         });
       }
 
-      next();
-    } else {
-      res.status(401).json({
+      req.user = user;
+      return next();
+
+    } catch (error) {
+      console.error("Auth error:", error.name, error.message);
+
+      let message = "Not authorized";
+      if (error.name === "TokenExpiredError") message = "Token expired";
+      if (error.name === "JsonWebTokenError") message = "Invalid token";
+
+      return res.status(401).json({
         success: false,
-        message: "Not authorized, no token",
+        message,
       });
     }
-  } catch (error) {
-    console.error("Auth error:", error.message);
-    res.status(401).json({
-      success: false,
-      message: "Token failed",
-    });
   }
+
+  // No "Bearer" header at all
+  return res.status(401).json({
+    success: false,
+    message: "Not authorized, no token",
+  });
 };
 
 module.exports = protect;
