@@ -38,28 +38,32 @@ const registerUser = async (req, res) => {
 };
 
 
+// LOGIN
 const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
+
     const user = await User.findOne({ email });
-    
-    if (!user) return res.status(401).json({ success: false, message: "Invalid credentials" });
-    
+    if (!user) {
+      return res.status(400).json({ success: false, message: "Invalid Email or Password" });
+    }
+
     const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) return res.status(401).json({ success: false, message: "Invalid credentials" });
-    
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
-    
-    // If using cookies, put res.cookie INSIDE the function
-    res.cookie("token", token, {
-      httpOnly: true,
-      secure: false, // false for localhost, true for Render
-      sameSite: "lax"
+    if (!isMatch) {
+      return res.status(400).json({ success: false, message: "Invalid Email or Password" });
+    }
+
+    const token = jwt.sign({ id: user._id }, JWT_SECRET, { expiresIn: "7d" });
+
+    res.status(200).json({
+      success: true, token,
+      user: {
+        _id: user._id, name: user.name, email: user.email,
+        role: user.role, bio: user.bio, skills: user.skills, github: user.github,
+      },
     });
-    
-    res.json({ success: true, token, user });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
   }
-}
+};
 module.exports = { registerUser, loginUser };

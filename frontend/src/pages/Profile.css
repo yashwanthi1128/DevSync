@@ -250,5 +250,5 @@
   outline: none;
   transition: border-color 0.2s ease; /* Remove backdrop-filter */
   font-family: inherit;
-  /* backdrop-filter: blur(16px); ← DELETE THIS LINE */
+
 }

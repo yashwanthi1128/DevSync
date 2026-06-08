@@ -2,7 +2,6 @@ const express = require("express");
 const dotenv = require("dotenv");
 const cors = require("cors");
 const http = require("http");
-const cookieParser = require('cookie-parser');
 
 
 dotenv.config();
@@ -20,7 +19,6 @@ app.use(cors({
 // ADD THESE 2 LINES - this fixes req.body undefined
 app.use(express.json()); 
 app.use(express.urlencoded({ extended: true }));
-app.use(cookieParser());
 
 // DB connection
 const connectDB = require("./config/db");
