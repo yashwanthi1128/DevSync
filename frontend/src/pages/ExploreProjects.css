@@ -1,0 +1,247 @@
+:root {
+  --purple: #7C3AED;
+  --blue: #0EA5E9;
+  --bg-gradient: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+  --brand-gradient: linear-gradient(135deg, #7C3AED 0%, #0EA5E9 100%);
+  --glass: rgba(255, 255, 255, 0.06);
+  --glass-bg: rgba(255, 255, 255, 0.06);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --text-main: #ffffff;
+  --text-muted: #9ca3af;
+  --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+/* Page header */
+.page-header { margin-bottom: 24px; }
+.page-header h1{
+  margin: 0 0 4px;
+  font-size: 28px;
+  font-weight: 800;
+  background: var(--brand-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  
+}
+/* Filter bar */
+.filter-bar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.filter-input {
+  flex: 1;
+  min-width: 150px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--glass-border);
+  background: rgba(255,255,255,0.05);
+  color: var(--text-main);
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+  font-family: inherit;
+}
+.filter-input:focus {
+  border-color: var(--purple);
+  box-shadow: 0 0 0 3px rgba(124,58,237,0.2);
+}
+.filter-input::placeholder { color: rgba(255,255,255,0.3); }
+
+.filter-select {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--glass-border);
+  background: rgba(255,255,255,0.05);
+  color: var(--text-main);
+  font-size: 14px;
+  outline: none;
+  cursor: pointer;
+  font-family: inherit;
+  min-width: 130px;
+}
+.filter-select option { background: #1a1a2e; color: #fff; }
+
+/* Projects grid */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+.explore-project-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+}
+.explore-project-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 16px 48px rgba(124,58,237,0.3);
+  border-color: rgb(28, 8, 63);
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.project-card-top { 
+  flex: 1; 
+}
+
+.project-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 10px;
+  gap: 8px;
+}
+
+.project-card-header h3 { 
+  margin: 0; 
+  color: #f8fafc; /* Match login header text */
+  font-size: 17px; 
+  font-weight: 700; 
+}
+
+.project-desc { 
+  color: #94a3b8; /* Match login subtitle text */
+  font-size: 14px; 
+  margin: 0 0 12px; 
+  line-height: 1.5; 
+}
+
+.project-meta { 
+  font-size: 12px; 
+  color: #64748b; /* Match login placeholder/input muted color */
+  margin: 0 0 12px; 
+}
+/* Status badges */
+.status-badge { padding: 3px 10px; border-radius: 20px; font-size: 12px; font-weight: 700; white-space: nowrap; }
+.status-open   { background: rgba(16,185,129,0.15); color: #10b981; }
+.status-closed { background: rgba(239,68,68,0.15);  color: #ef4444; }
+
+/* Status tags (apply/applied/accepted/rejected) */
+.status-tag { padding: 6px 14px; border-radius: 8px; font-size: 13px; font-weight: 700; }
+.status-tag.accepted { background: rgba(16,185,129,0.15); color: #10b981; }
+.status-tag.rejected { background: rgba(239,68,68,0.15);  color: #ef4444; }
+.status-tag.applied  { background: rgba(245,158,11,0.15); color: #f59e0b; }
+
+/* Skill tags */
+.skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.skill-tag {
+  background: rgba(124,58,237,0.2);
+  color: #a78bfa;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  border: 1px solid rgba(124,58,237,0.3);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Team preview on card */
+.team-preview {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+.team-label { font-size: 12px; color: var(--text-muted); }
+.team-chip {
+  background: rgba(16,185,129,0.12);
+  color: #10b981;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* Card footer */
+.project-footer {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--glass-border);
+}
+
+.apply-btn { font-size: 13px; padding: 8px 18px; }
+.view-btn  { font-size: 13px; padding: 8px 16px; }
+
+/* Modal */
+.project-modal {
+  width: 100%;
+  max-width: 560px;
+  max-height: 85vh;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+.project-modal::-webkit-scrollbar { display: none; }
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+.modal-header h2 { margin: 0; color: var(--text-main); font-size: 22px; font-weight: 800; }
+
+.modal-desc { color: var(--text-muted); line-height: 1.6; margin: 16px 0; }
+
+.modal-section { margin-bottom: 20px; }
+.modal-section-title {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0 0 10px;
+}
+.modal-value { color: var(--text-main); margin: 0; font-size: 15px; }
+
+/* Team members in modal */
+.team-member-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  background: rgba(16,185,129,0.08);
+  border-radius: 10px;
+  margin-bottom: 8px;
+  border: 1px solid rgba(16,185,129,0.15);
+}
+.team-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--brand-gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 800;
+  font-size: 15px;
+  flex-shrink: 0;
+}
+.team-member-name  { margin: 0; color: #fff; font-weight: 600; font-size: 14px; }
+.team-member-email { margin: 0; color: var(--text-muted); font-size: 12px; }
+.team-member-badge {
+  margin-left: auto;
+  color: #10b981;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.modal-footer {
+  margin-top: 8px;
+  padding-top: 16px;
+  border-top: 1px solid var(--glass-border);
+}
+
+/* Loading */
+.loading-text { color: var(--text-muted); text-align: center; padding: 40px; }
