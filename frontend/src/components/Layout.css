@@ -87,14 +87,14 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  font-size: 22px;
-  font-weight: 800;
+  font-size: 30px;
+  font-weight: 1000;
   letter-spacing: 1px;
 }
 
 .user-meta {
   margin: 4px 0 0;
-  font-size: 11px;
+  font-size: 16px;
   color: var(--text-muted);
 }
 
@@ -108,8 +108,8 @@ body {
   padding: 10px 14px;
   border-radius: 10px;
   cursor: pointer;
-  font-size: 14px;
-  font-weight: 400;
+  font-size: 18px;
+  font-weight: 600;
   color: var(--text-muted);
   transition: all 0.2s ease;
 }
@@ -131,11 +131,11 @@ body {
   padding: 10px 14px;
   border-radius: 10px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 18px;
   color: #fff;
   font-weight: 600;
   background: linear-gradient(90deg, #ef4444, #dc2626);
-  text-align: center;
+  text-align: left;
   transition: all 0.2s ease;
   border: none;
 }
@@ -213,7 +213,7 @@ body {
 .modal { width: 320px; text-align: center; }
 .modal h3 { margin: 0 0 8px; color: var(--text-main); }
 .modal p { color: var(--text-muted); font-size: 14px; margin: 0 0 24px; }
-.modal-actions { display: flex; gap: 10px; }
+.modal-actions { display: flex; gap: 10px; justify-content: center; }
 
 /* ─── Stat cards ─── */
 .stats-grid {

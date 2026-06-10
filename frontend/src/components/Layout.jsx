@@ -17,16 +17,16 @@ export default function Layout({ children }) {
 
   const navLinks = isAdmin
     ? [
-        { label: "🏠 My Projects",    path: "/admin",          icon: "🏠", short: "Projects" },
-        { label: "➕ Create Project", path: "/create-project", icon: "➕", short: "Create" },
-        { label: "📋 Task Manager",   path: "/admin/tasks",    icon: "📋", short: "Tasks" },
-        { label: "👤 Profile",        path: "/profile",        icon: "👤", short: "Profile" },
+        { label: "My Projects",    path: "/admin",          icon: "", short: "Projects" },
+        { label: "Create Project", path: "/create-project", icon: "", short: "Create" },
+        { label: "Task Manager",   path: "/admin/tasks",    icon: "", short: "Tasks" },
+        { label: "Profile",        path: "/profile",        icon: "", short: "Profile" },
       ]
     : [
-        { label: "🏠 Dashboard",        path: "/home",     icon: "🏠", short: "Home" },
-        { label: "🔍 Explore Projects", path: "/projects", icon: "🔍", short: "Explore" },
-        { label: "📋 Task Manager",     path: "/tasks",    icon: "📋", short: "Tasks" },
-        { label: "👤 Profile",          path: "/profile",  icon: "👤", short: "Profile" },
+        { label: "Dashboard",        path: "/home",     icon: "", short: "Home" },
+        { label: "Explore Projects", path: "/projects", icon: "", short: "Explore" },
+        { label: "Task Manager",     path: "/tasks",    icon: "", short: "Tasks" },
+        { label: "Profile",          path: "/profile",  icon: "", short: "Profile" },
       ];
 
   return (
@@ -54,7 +54,7 @@ export default function Layout({ children }) {
         </div>
 
         <button className="logout-btn" onClick={() => setShowLogout(true)}>
-          🚪 Logout
+        Logout
         </button>
       </aside>
 
@@ -74,7 +74,7 @@ export default function Layout({ children }) {
           </button>
         ))}
         <button className="bottom-nav-item" onClick={() => setShowLogout(true)}>
-          <span>🚪</span>
+          <span></span>
           <span>Logout</span>
         </button>
       </nav>
@@ -83,7 +83,7 @@ export default function Layout({ children }) {
       {showLogout && (
         <div className="modal-overlay" onClick={() => setShowLogout(false)}>
           <div className="glass-card modal" onClick={(e) => e.stopPropagation()}>
-            <p style={{ fontSize: "28px", marginBottom: "8px" }}>🚪</p>
+            <p style={{ fontSize: "28px", marginBottom: "8px" }}></p>
             <h3>Logging out?</h3>
             <p>Are you sure you want to logout?</p>
             <div className="modal-actions">
