@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import NotificationBell from "./NotificationBell";
 import "./Layout.css";
 
 export default function Layout({ children }) {
@@ -61,9 +60,6 @@ export default function Layout({ children }) {
 
       {/* Main content */}
       <main className="main-content">
-        <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: "16px" }}>
-          <NotificationBell />
-        </div>
         {children}
       </main>
 
