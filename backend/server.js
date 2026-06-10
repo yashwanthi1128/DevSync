@@ -6,16 +6,10 @@ dotenv.config();
 
 const app = express();
 
-// middleware
 app.use(cors({
-  origin: [
-    "http://localhost:3000",
-    "https://devsync-backend-2aze.onrender.com",
-    "https://devsync-my-frontend.onrender.com",
-  ],
-  credentials: true
+  origin: "*",
+  credentials: false
 }));
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
