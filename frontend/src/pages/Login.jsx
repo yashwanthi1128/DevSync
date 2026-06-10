@@ -1,10 +1,9 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import axios from "axios";
 import { FiEye, FiEyeOff } from "react-icons/fi";
+import API from "../services/api";
 import "./Login.css";
-const API_URL = process.env.REACT_APP_API_URL;
-console.log('API_URL:', API_URL); // Add this
+
 export default function Login() {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [showPassword, setShowPassword] = useState(false);
@@ -22,32 +21,14 @@ export default function Login() {
     setLoading(true);
     setError("");
     try {
-      const res = await axios.post(
-        `${API_URL}/api/auth/login`, // Fixed: no more localhost
-        formData,
-        {
-          headers: { 'Content-Type': 'application/json' },
-          withCredentials: true // if you use cookies/sessions
-        }
-      );
-      
+      const res = await API.post("/auth/login", formData);
       const { token, user } = res.data;
-      
-      if (!token || !user) {
-        throw new Error("Invalid response from server");
-      }
-
+      if (!token || !user) throw new Error("Invalid response from server");
       localStorage.setItem("token", token);
       localStorage.setItem("user", JSON.stringify(user));
-      
       navigate(user.role === "admin" ? "/admin" : "/home");
     } catch (err) {
-      console.error("Login error:", err);
-      setError(
-        err.response?.data?.message || 
-        err.message ||
-        "Login failed. Check your credentials."
-      );
+      setError(err.response?.data?.message || err.message || "Login failed. Check your credentials.");
     } finally {
       setLoading(false);
     }
